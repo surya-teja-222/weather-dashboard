@@ -35,6 +35,9 @@ module.exports = {
     }],
     radix: 'error',
     semi: 'error',
+    "import/no-import-module-exports": "off",
+    "default-param-last": 0,
+    'react/prop-types': 0,
 
     'import/prefer-default-export': 0,
     'import/no-unresolved': 'error',
