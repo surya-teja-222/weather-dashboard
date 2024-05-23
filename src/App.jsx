@@ -1,24 +1,22 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  increment,
-  decrement, reset,
-} from './stores/counter';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
 
-function App() {
-  const dispatch = useDispatch();
-  const counter = useSelector((state) => state.counter);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Dashboard />,
+  }, {
+    path: '/settings',
+    element: <h1>Settings</h1>,
+  }, {
+    path: '/about',
+    element: <h1>About</h1>,
+  },
+]);
+
+export default function App() {
   return (
-    <div>
-      <h1 className='text-xl font-bold'>Counter</h1>
-      <h2 className=' p-3 bg-purple-400 w-fit m-6 rounded-xl text-white'>{counter}</h2>
-      <div>
-        <button type="button" onClick={() => dispatch(increment())}>+</button>
-        <button type="button" onClick={() => dispatch(decrement())}>-</button>
-        <button type="button" onClick={() => dispatch(reset())}>Reset</button>
-      </div>
-    </div>
+    <RouterProvider router={router} />
   );
 }
-
-export default App;

@@ -24,7 +24,7 @@ module.exports = {
     'jsx-quotes': 'error',
     'key-spacing': 'error',
     'keyword-spacing': 1,
-    'max-len': ['error', { code: 80 }],
+    'max-len': ['error', { code: 120 }],
     'no-console': 1,
     'no-multi-spaces': 'error',
     'no-sequences': 'error',
