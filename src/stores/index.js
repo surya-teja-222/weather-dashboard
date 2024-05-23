@@ -3,14 +3,16 @@ import {
 } from 'redux';
 import { thunk } from 'redux-thunk';
 
-import counterReducer from './counter';
+import locationReducer from './location';
+import settingsReducer from './settings';
 
 const middleware = [
   thunk,
 ];
 
 const reducers = combineReducers({
-  counter: counterReducer,
+  settings: settingsReducer,
+  location: locationReducer,
 });
 
 const composeEnhancers = typeof window === 'object'

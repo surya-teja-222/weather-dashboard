@@ -1,6 +1,7 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
+import Settings from './components/Settings';
 
 const router = createBrowserRouter([
   {
@@ -8,7 +9,7 @@ const router = createBrowserRouter([
     element: <Dashboard />,
   }, {
     path: '/settings',
-    element: <h1>Settings</h1>,
+    element: <Settings />,
   }, {
     path: '/about',
     element: <h1>About</h1>,
