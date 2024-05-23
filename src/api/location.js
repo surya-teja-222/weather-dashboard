@@ -1,7 +1,7 @@
-const BASE_URL = 'https://api.weatherapi.com/v1/search.json';
+const BASE_URL = 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete';
 
 async function getLocationsByQuery(query, apiKey) {
-  const response = await fetch(`${BASE_URL}?key=${apiKey}&q=${query}`);
+  const response = await fetch(`${BASE_URL}?apikey=${apiKey}&q=${query}`);
   if (!response.ok) {
     throw new Error('Failed to get IP address');
   }
@@ -10,7 +10,14 @@ async function getLocationsByQuery(query, apiKey) {
 }
 
 async function getIpAddr() {
-  const response = await fetch('https://api.ipify.org?format=json');
+  const response = await fetch(
+    'http://ipinfo.io',
+    {
+      headers: {
+        Accept: 'application/json',
+      },
+    },
+  );
 
   if (!response.ok) {
     throw new Error('Failed to get IP address');
