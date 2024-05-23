@@ -1,4 +1,4 @@
-import cogoToast from 'cogo-toast';
+import { toast } from 'react-toast';
 import locationApi from '../api/location';
 
 const BASE_NAME = 'selected_location';
@@ -19,7 +19,12 @@ export function setIpAddress() {
         payload: json.city,
       });
     } catch (err) {
-      cogoToast.error('Failed to auto Detect City. Please select manually. Or diable Adblock');
+      toast.error(
+        'Failed to auto Detect City. Please select manually. Or diable Adblock',
+        {
+          autoClose: 5000,
+        },
+      );
     }
   };
 }

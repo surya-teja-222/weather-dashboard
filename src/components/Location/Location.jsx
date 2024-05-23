@@ -10,6 +10,8 @@ import {
 import { ipAddrSelector, searchOptionsSelector } from '../../selectors/location';
 import locationIcon from '../../assets/location.svg';
 
+const DEBOUNCE_TIMEOUT = 1000;
+
 function Location() {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(null);
   const debounceTimeoutRef = useRef(null);
@@ -41,7 +43,7 @@ function Location() {
 
     debounceTimeoutRef.current = setTimeout(() => {
       setDebouncedSearchTerm(value);
-    }, 500);
+    }, DEBOUNCE_TIMEOUT);
   }, []);
 
   const handleSelect = useCallback((selectedOption) => {

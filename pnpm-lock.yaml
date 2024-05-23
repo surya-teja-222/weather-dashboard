@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  cogo-toast:
-    specifier: ^4.2.3
-    version: 4.2.3(prop-types@15.8.1)(react-dom@18.3.1)(react@18.3.1)
   react:
     specifier: ^18.2.0
     version: 18.3.1
@@ -23,6 +20,9 @@ dependencies:
   react-select:
     specifier: ^5.8.0
     version: 5.8.0(@types/react@18.3.2)(react-dom@18.3.1)(react@18.3.1)
+  react-toast:
+    specifier: ^1.0.3
+    version: 1.0.3(react@18.3.1)
   redux:
     specifier: ^5.0.1
     version: 5.0.1
@@ -1198,18 +1198,6 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
-
-  /cogo-toast@4.2.3(prop-types@15.8.1)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-Lp/lPk493MLtkgqHboVJXb5frvLJqUDpIqLh6uCMcNecw0/shikDG+DGsjvmPe5qmorRwxe+6JgfKobRrcvhZQ==}
-    peerDependencies:
-      prop-types: ^15.6.2
-      react: ^16.8.0
-      react-dom: ^16.8.0
-    dependencies:
-      prop-types: 15.8.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-    dev: false
 
   /color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -2854,6 +2842,14 @@ packages:
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.3.2)(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /react-toast@1.0.3(react@18.3.1):
+    resolution: {integrity: sha512-gL3+O5hlLaoBmd36oXWKrjFeUyLCMQ04AIh48LrnUvdeg2vhJQ0E803TgVemgJvYUXKlutMVn9+/QS2DDnk26Q==}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 18.3.1
     dev: false
 
   /react-transition-group@4.4.5(react-dom@18.3.1)(react@18.3.1):

@@ -3,6 +3,7 @@ import {
 } from 'redux';
 import { thunk } from 'redux-thunk';
 
+import conditionsReducer from './conditions';
 import locationReducer from './location';
 import settingsReducer from './settings';
 
@@ -13,6 +14,7 @@ const middleware = [
 const reducers = combineReducers({
   settings: settingsReducer,
   location: locationReducer,
+  conditions: conditionsReducer,
 });
 
 const composeEnhancers = typeof window === 'object'
