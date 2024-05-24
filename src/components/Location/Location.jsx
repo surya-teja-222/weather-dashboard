@@ -50,15 +50,13 @@ function Location() {
     dispatch(updateLocation(selectedOption.value));
   }, [dispatch]);
 
-  console.log(options);
-
   return (
     <div className="flex px-3 py-1 m-3 items-center border-stone-100 border-2 w-fit rounded-lg">
       <img src={locationIcon} alt="location" className="w-5 h-5" />
       <Select
         options={options}
         value={options[0]}
-        className="w-[200px] text-sm ml-2"
+        className="w-[300px] text-sm ml-2"
         isSearchable
         onInputChange={handleInputChange}
         onChange={handleSelect}

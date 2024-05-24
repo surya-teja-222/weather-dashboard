@@ -7,6 +7,7 @@ import 'react-tabs/style/react-tabs.css';
 
 import { locationSelector, nearbyLocationsSelector } from '../../selectors/location';
 import { fetchNearByLocations } from '../../stores/location';
+import SelectedTabContent from '../SelectedTabContent';
 
 export default function NearByLocationTabs() {
   const [tabIndex, setTabIndex] = useState(0);
@@ -34,14 +35,11 @@ export default function NearByLocationTabs() {
       </TabList>
       {nearByLocations?.slice(0, 5).map((loc) => (
         <TabPanel key={loc.Key}>
-          {tabIndex === nearByLocations.indexOf(loc) && (
-            // render only the selected tab
-            // better performance
-            <div>
-              <h2>{loc.LocalizedName}</h2>
-              <p>{loc.Country.LocalizedName}</p>
-            </div>
-          )}
+          <SelectedTabContent
+            tabIndex={tabIndex}
+            location={loc}
+            nearByLocations={nearByLocations}
+          />
         </TabPanel>
       ))}
     </Tabs>

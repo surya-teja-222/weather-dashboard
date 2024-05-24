@@ -4,6 +4,7 @@ import {
 import { thunk } from 'redux-thunk';
 
 import conditionsReducer from './conditions';
+import forecastReducer from './forecast';
 import locationReducer from './location';
 import settingsReducer from './settings';
 
@@ -15,6 +16,7 @@ const reducers = combineReducers({
   settings: settingsReducer,
   location: locationReducer,
   conditions: conditionsReducer,
+  forecast: forecastReducer,
 });
 
 const composeEnhancers = typeof window === 'object'

@@ -104,7 +104,7 @@ export const fetchNearByLocations = () => async (dispatch, getState) => {
 
     dispatch({
       type: SET_NEARBY_LOCATIONS,
-      payload: json,
+      payload: [location, ...json],
     });
   } catch (err) {
     // do nothing
