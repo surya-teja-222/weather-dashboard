@@ -17,7 +17,7 @@ export default function NearByLocationTabs() {
   const nearByLocations = useSelector(nearbyLocationsSelector);
 
   useEffect(() => {
-    if (location) {
+    if (location && !nearByLocations) {
       dispatch(fetchNearByLocations());
     }
   }, [dispatch, location, nearByLocations]);
