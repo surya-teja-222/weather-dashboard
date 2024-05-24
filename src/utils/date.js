@@ -14,3 +14,13 @@ export function getFiveDaysFromNow() {
   date.setDate(date.getDate() + 4);
   return date;
 }
+
+export function toHHmm(date) {
+  const dateObj = new Date(date);
+
+  return dateObj.toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: getUserTimeZone(),
+  });
+}

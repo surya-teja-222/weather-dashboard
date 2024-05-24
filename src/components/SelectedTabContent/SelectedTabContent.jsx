@@ -2,9 +2,18 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchForecast } from '../../stores/forecast';
-import { isForecastPresentSelector } from '../../selectors/forecast';
+import {
+  isForecastPresentSelector, rainProbSelector, realFeelTempSelector, relativeHumiditySelector, sunRiseSetSelector,
+} from '../../selectors/forecast';
 import DatePicker from '../DatePicker';
 import locationIcon from '../../assets/location-w.svg';
+import SunriseIcon from '../../assets/sunrise.svg';
+import SunsetIcon from '../../assets/sunset.svg';
+import TempIcon from '../../assets/weather_therometer.svg';
+import RainIcon from '../../assets/rain.svg';
+import HumidityIcon from '../../assets/humidity.svg';
+import Card from '../Card/Card';
+import { toHHmm } from '../../utils/date';
 
 export default function SelectedTabContent({
   tabIndex, location, nearByLocations,
@@ -14,12 +23,14 @@ export default function SelectedTabContent({
   const forecastForDateExist = useSelector(isForecastPresentSelector(
     location?.Key,
   ));
-
-  console.log('forecastForDateExist', forecastForDateExist);
+  const sunRiseSet = useSelector(sunRiseSetSelector(location?.Key));
+  const realFeelTemp = useSelector(realFeelTempSelector(location?.Key));
+  const rainProb = useSelector(rainProbSelector(location?.Key));
+  const relativeHumidity = useSelector(relativeHumiditySelector(location?.Key));
 
   useEffect(() => {
     if (isOpen && location.Key && !forecastForDateExist) {
-      // dispatch(fetchForecast(location.Key));
+      dispatch(fetchForecast(location.Key));
     }
   }, [dispatch, forecastForDateExist, isOpen, location.Key]);
 
@@ -36,6 +47,49 @@ export default function SelectedTabContent({
             </span>
           </div>
           <DatePicker />
+        </div>
+
+        <div className="flex p-4 bg-[#9AC8CD] rounded-3xl gap-3 items-center justify-center w-full flex-wrap">
+          {sunRiseSet && (
+            <>
+              <Card
+                title="Sunrise"
+                value={toHHmm(sunRiseSet.sunrise)}
+                icon={SunriseIcon}
+                cardColor="#FFC470"
+              />
+              <Card
+                title="SunSet"
+                value={toHHmm(sunRiseSet.sunset)}
+                icon={SunsetIcon}
+                cardColor="#5AB2FF"
+              />
+            </>
+          )}
+          {realFeelTemp && (
+            <Card
+              title="Real Feel"
+              value={`${realFeelTemp.min}°/${realFeelTemp.max}°`}
+              icon={TempIcon}
+              cardColor="#94FFD8"
+            />
+          )}
+          {rainProb && (
+            <Card
+              title="Rain Probability"
+              value={`${rainProb}%`}
+              icon={RainIcon}
+              cardColor="#E5DDC5"
+            />
+          )}
+          {relativeHumidity && (
+            <Card
+              title="Humidity"
+              value={`${relativeHumidity}%`}
+              icon={HumidityIcon}
+              cardColor="#41C9E2"
+            />
+          )}
         </div>
       </div>
     );

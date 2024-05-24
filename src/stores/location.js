@@ -21,11 +21,17 @@ export function setIpAddress() {
       });
     } catch (err) {
       toast.error(
-        'Failed to auto Detect City. Please select manually. Or diable Adblock',
+        `Failed to auto Detect City. Please select manually. Or diable Adblock
+        Meanwhile we are setting to Mumbai.
+        `,
         {
           autoClose: 5000,
         },
       );
+      dispatch({
+        type: SET_IP_ADDR,
+        payload: 'Mumbai',
+      });
     }
   };
 }

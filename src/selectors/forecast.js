@@ -3,11 +3,16 @@ import { isSameDay } from '../utils/date';
 
 const baseSelector = (state) => state.forecast;
 
+export const dateSelector = createSelector(
+  baseSelector,
+  (forecast) => forecast.date,
+);
+
 export const isForecastPresentSelector = (key) => createSelector(
   baseSelector,
-  (forecast) => {
+  dateSelector,
+  (forecast, date) => {
     const forcastForLocation = forecast.data[key];
-    const { date } = forecast;
 
     const forecastForDate = forcastForLocation?.DailyForecasts?.find(
       (f) => {
@@ -20,7 +25,44 @@ export const isForecastPresentSelector = (key) => createSelector(
   },
 );
 
-export const dateSelector = createSelector(
-  baseSelector,
-  (forecast) => forecast.date,
+export const sunRiseSetSelector = (key) => createSelector(
+  isForecastPresentSelector(key),
+  (forecast) => {
+    if (!forecast) return null;
+
+    return {
+      sunrise: forecast.Sun?.Rise,
+      sunset: forecast.Sun?.Set,
+    };
+  },
+);
+
+export const realFeelTempSelector = (key) => createSelector(
+  isForecastPresentSelector(key),
+  (forecast) => {
+    if (!forecast) return null;
+
+    return {
+      min: forecast.RealFeelTemperature.Minimum.Value,
+      max: forecast.RealFeelTemperature.Maximum.Value,
+    };
+  },
+);
+
+export const rainProbSelector = (key) => createSelector(
+  isForecastPresentSelector(key),
+  (forecast) => {
+    if (!forecast) return null;
+
+    return forecast.Day?.RainProbability;
+  },
+);
+
+export const relativeHumiditySelector = (key) => createSelector(
+  isForecastPresentSelector(key),
+  (forecast) => {
+    if (!forecast) return null;
+
+    return forecast.Day?.RelativeHumidity?.Average;
+  },
 );

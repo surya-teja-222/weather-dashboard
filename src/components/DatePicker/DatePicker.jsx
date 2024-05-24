@@ -22,6 +22,7 @@ export default function DatePickerInput() {
         value={selectedDate}
         onChange={handleUpdate}
         maxDate={getFiveDaysFromNow()}
+        minDate={new Date()}
       />
     </div>
   );
