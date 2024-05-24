@@ -11,7 +11,7 @@ async function getLocationsByQuery(query, apiKey) {
 
 async function getIpAddr() {
   const response = await fetch(
-    'http://ipinfo.io',
+    'https://ipinfo.io',
     {
       headers: {
         Accept: 'application/json',
