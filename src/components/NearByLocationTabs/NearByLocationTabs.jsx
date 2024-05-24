@@ -17,7 +17,7 @@ export default function NearByLocationTabs() {
   const nearByLocations = useSelector(nearbyLocationsSelector);
 
   useEffect(() => {
-    if (location && !nearByLocations.length) {
+    if (location) {
       dispatch(fetchNearByLocations());
     }
   }, [dispatch, location, nearByLocations]);
@@ -26,7 +26,6 @@ export default function NearByLocationTabs() {
     <Tabs
       selectedIndex={tabIndex}
       onSelect={(index) => setTabIndex(index)}
-      className="w-[60vw]"
     >
       <TabList>
         {nearByLocations?.slice(0, 5).map((loc) => (

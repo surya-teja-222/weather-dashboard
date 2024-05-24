@@ -66,3 +66,12 @@ export const relativeHumiditySelector = (key) => createSelector(
     return forecast.Day?.RelativeHumidity?.Average;
   },
 );
+
+export const storiesInfoSelector = (key) => createSelector(
+  isForecastPresentSelector(key),
+  (forecast) => {
+    if (!forecast) return [];
+
+    return forecast?.AirAndPollen || [];
+  },
+);

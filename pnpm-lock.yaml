@@ -17,6 +17,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.3.1(react@18.3.1)
+  react-insta-stories:
+    specifier: ^2.6.2
+    version: 2.6.2(react@18.3.1)
   react-redux:
     specifier: ^9.1.2
     version: 9.1.2(@types/react@18.3.2)(react@18.3.1)(redux@5.0.1)
@@ -2896,6 +2899,14 @@ packages:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       warning: 4.0.3
+    dev: false
+
+  /react-insta-stories@2.6.2(react@18.3.1):
+    resolution: {integrity: sha512-eM1YHr92bV7WK5h9sECjyYnqZtPxnzJrZFr9IaoDcaZaAEOHVRav+pST513DIG8Hk8QjSTHtdvHHZ0Ka5HwH8w==}
+    peerDependencies:
+      react: '>=16.8.2'
+    dependencies:
+      react: 18.3.1
     dev: false
 
   /react-is@16.13.1:

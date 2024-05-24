@@ -14,6 +14,7 @@ import RainIcon from '../../assets/rain.svg';
 import HumidityIcon from '../../assets/humidity.svg';
 import Card from '../Card/Card';
 import { toHHmm } from '../../utils/date';
+import Stories from '../Stories';
 
 export default function SelectedTabContent({
   tabIndex, location, nearByLocations,
@@ -49,47 +50,50 @@ export default function SelectedTabContent({
           <DatePicker />
         </div>
 
-        <div className="flex p-4 bg-[#9AC8CD] rounded-3xl gap-3 items-center justify-center w-full flex-wrap">
-          {sunRiseSet && (
-            <>
+        <div className="flex justify-center w-[80vw] gap-4">
+          <div className="flex p-4 bg-[#9AC8CD] rounded-3xl gap-3 items-center justify-center w-[60%] flex-wrap">
+            {sunRiseSet && (
+              <>
+                <Card
+                  title="Sunrise"
+                  value={toHHmm(sunRiseSet.sunrise)}
+                  icon={SunriseIcon}
+                  cardColor="#FFC470"
+                />
+                <Card
+                  title="SunSet"
+                  value={toHHmm(sunRiseSet.sunset)}
+                  icon={SunsetIcon}
+                  cardColor="#5AB2FF"
+                />
+              </>
+            )}
+            {realFeelTemp && (
               <Card
-                title="Sunrise"
-                value={toHHmm(sunRiseSet.sunrise)}
-                icon={SunriseIcon}
-                cardColor="#FFC470"
+                title="Real Feel"
+                value={`${realFeelTemp.min}°/${realFeelTemp.max}°`}
+                icon={TempIcon}
+                cardColor="#94FFD8"
               />
+            )}
+            {rainProb && (
               <Card
-                title="SunSet"
-                value={toHHmm(sunRiseSet.sunset)}
-                icon={SunsetIcon}
-                cardColor="#5AB2FF"
+                title="Rain Probability"
+                value={`${rainProb}%`}
+                icon={RainIcon}
+                cardColor="#E5DDC5"
               />
-            </>
-          )}
-          {realFeelTemp && (
-            <Card
-              title="Real Feel"
-              value={`${realFeelTemp.min}°/${realFeelTemp.max}°`}
-              icon={TempIcon}
-              cardColor="#94FFD8"
-            />
-          )}
-          {rainProb && (
-            <Card
-              title="Rain Probability"
-              value={`${rainProb}%`}
-              icon={RainIcon}
-              cardColor="#E5DDC5"
-            />
-          )}
-          {relativeHumidity && (
-            <Card
-              title="Humidity"
-              value={`${relativeHumidity}%`}
-              icon={HumidityIcon}
-              cardColor="#41C9E2"
-            />
-          )}
+            )}
+            {relativeHumidity && (
+              <Card
+                title="Humidity"
+                value={`${relativeHumidity}%`}
+                icon={HumidityIcon}
+                cardColor="#41C9E2"
+              />
+            )}
+          </div>
+          <Stories k={location.Key} />
         </div>
       </div>
     );

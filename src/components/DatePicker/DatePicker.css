@@ -2,3 +2,7 @@
   border-radius: 16px;
   padding: 4px 8px;
 }
+
+.react-date-picker__calendar {
+  z-index: 1000;
+}
