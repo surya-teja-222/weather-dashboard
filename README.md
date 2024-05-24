@@ -16,7 +16,8 @@
 
 ### Developer Page (Add your own API Key)
 
-<img width="1680" alt="Screenshot 2024-05-24 at 3 20 46 PM" src="https://github.com/surya-teja-222/weather-dashboard/assets/74102066/37c9d4d9-c010-4849-b89a-c6d6e07a201d">
+
+<img width="1194" alt="Screenshot 2024-05-24 at 3 20 56 PM" src="https://github.com/surya-teja-222/weather-dashboard/assets/74102066/a410dc1b-4e75-4990-bf49-e680c8c682e6">
 
 
 ### Failed to Detect Location
