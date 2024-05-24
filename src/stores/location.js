@@ -7,6 +7,7 @@ const SET_LOCATION = `${BASE_NAME}/SET_LOCATION`;
 const SET_IP_ADDR = `${BASE_NAME}/SET_IP_ADDR`;
 const SET_AUTO_SELECTED = `${BASE_NAME}/SET_AUTO_SELECTED`;
 const SET_SEARCH_OPTIONS = `${BASE_NAME}/SET_SEARCH_OPTIONS`;
+const SET_NEARBY_LOCATIONS = `${BASE_NAME}/SET_NEARBY_LOCATIONS`;
 
 export function setIpAddress() {
   return async (dispatch) => {
@@ -47,10 +48,6 @@ export function setLocationFromIp() {
       dispatch({
         type: SET_AUTO_SELECTED,
         payload: true,
-      });
-      dispatch({
-        type: SET_SEARCH_OPTIONS,
-        payload: json,
       });
     } catch (err) {
       // do nothing
@@ -94,11 +91,32 @@ export const setAutoSelected = (autoSelected) => ({
   payload: autoSelected,
 });
 
+export const fetchNearByLocations = () => async (dispatch, getState) => {
+  const { location } = getState().location;
+  const { apiKey } = getState().settings;
+
+  if (!apiKey) return;
+  if (!location) return;
+
+  try {
+    const res = await locationApi.getNearByLocations(location.Key, apiKey);
+    const json = await res.json();
+
+    dispatch({
+      type: SET_NEARBY_LOCATIONS,
+      payload: json,
+    });
+  } catch (err) {
+    // do nothing
+  }
+};
+
 const initialState = {
   location: null,
   ipAddr: null,
   autoSelected: false,
   searchOptions: [],
+  nearbyLocations: [],
 };
 
 export default function locationReducer(state = initialState, action) {
@@ -122,6 +140,11 @@ export default function locationReducer(state = initialState, action) {
       return {
         ...state,
         searchOptions: [...action.payload],
+      };
+    case SET_NEARBY_LOCATIONS:
+      return {
+        ...state,
+        nearbyLocations: [...action.payload],
       };
     default:
       return state;

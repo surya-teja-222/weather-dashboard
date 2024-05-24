@@ -29,3 +29,8 @@ export const searchOptionsSelector = createSelector(
     }));
   },
 );
+
+export const nearbyLocationsSelector = createSelector(
+  baseSelector,
+  (state) => state.nearbyLocations,
+);

@@ -1,4 +1,4 @@
-const BASE_URL = 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete';
+const BASE_URL = 'https://dataservice.accuweather.com/locations/v1/cities/autocomplete';
 
 async function getLocationsByQuery(query, apiKey) {
   const response = await fetch(`${BASE_URL}?apikey=${apiKey}&q=${query}`);
@@ -26,7 +26,20 @@ async function getIpAddr() {
   return response;
 }
 
+async function getNearByLocations(locationKey, apiKey) {
+  const response = await fetch(
+    `https://dataservice.accuweather.com/locations/v1/cities/neighbors/${locationKey}?apikey=${apiKey}`,
+  );
+
+  if (!response.ok) {
+    throw new Error('Failed to get IP address');
+  }
+
+  return response;
+}
+
 export default {
   getLocationsByQuery,
   getIpAddr,
+  getNearByLocations,
 };

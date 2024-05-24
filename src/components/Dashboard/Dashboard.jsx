@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../Header';
 import Location from '../Location/Location';
 import SelectedLocationInfo from '../SelectedLocationInfo';
+import NearByLocationTabs from '../NearByLocationTabs';
 
 function Dashboard() {
   return (
@@ -13,6 +14,10 @@ function Dashboard() {
             <Location />
           </div>
           <SelectedLocationInfo />
+
+          <div className="flex justify-center items-center p-6">
+            <NearByLocationTabs />
+          </div>
         </div>
       </main>
     </>

@@ -13,10 +13,10 @@ import VisibilityIcon from '../../assets/visibility.svg';
 export default function SelectedLocationInfo() {
   const location = useSelector(locationSelector);
   const dispatch = useDispatch();
-  const feelsLike = useSelector(realFeelTemperatureSelector(location.Key));
-  const weatherText = useSelector(weatherTextSelector(location.Key));
-  const windSpeed = useSelector(windSpeedSelector(location.Key));
-  const visibility = useSelector(visibilitySelector(location.Key));
+  const feelsLike = useSelector(realFeelTemperatureSelector(location?.Key));
+  const weatherText = useSelector(weatherTextSelector(location?.Key));
+  const windSpeed = useSelector(windSpeedSelector(location?.Key));
+  const visibility = useSelector(visibilitySelector(location?.Key));
 
   useEffect(() => {
     if (location && location.Key && !feelsLike) {
